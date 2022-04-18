@@ -21,6 +21,7 @@
 
 # Visual Studio cache directory
 .vs/
+/Obstacle Course/.vscode/
 
 # Gradle cache directory
 .gradle/
