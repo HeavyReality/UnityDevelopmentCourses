@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    float xMoveValue = 0;
-    float yMoveValue = 0.01f;
-    float zMoveValue = 0;
+    [SerializeField] float xMoveValue = 0;
+    [SerializeField] float yMoveValue = 0.01f;
+    [SerializeField] float zMoveValue = 0;
 
     // Start is called before the first frame update
     void Start()
