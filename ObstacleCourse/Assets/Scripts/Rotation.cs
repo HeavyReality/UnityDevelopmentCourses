@@ -7,6 +7,7 @@ public class Rotation : MonoBehaviour
     [SerializeField] float xAngle = 0f;
     [SerializeField] float yAngle = 0.5f;
     [SerializeField] float zAngle = 0f;
+    [SerializeField] bool flipRotation = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,11 @@ public class Rotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(flipRotation){
+            xAngle = xAngle * -1f;
+            yAngle = yAngle * -1f;
+            zAngle = zAngle * -1f;
+        }
         transform.Rotate(xAngle,yAngle,zAngle);
     }
 }
