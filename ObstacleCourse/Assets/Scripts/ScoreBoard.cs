@@ -6,7 +6,10 @@ public class ScoreBoard : MonoBehaviour
 {
     int hitScore = 0;
     private void OnCollisionEnter(Collision other) {
-        hitScore++;
-        Debug.Log("You've bumped into " + hitScore.ToString() + " things!" );
+        
+        if(other.gameObject.tag != "Hit"){
+            hitScore++;
+            Debug.Log("You've bumped into " + hitScore.ToString() + " things!" );
+        }
     }
 }
