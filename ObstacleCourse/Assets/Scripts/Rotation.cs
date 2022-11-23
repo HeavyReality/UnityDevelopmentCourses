@@ -11,17 +11,16 @@ public class Rotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(flipRotation){
+            xAngle = xAngle * -1f;
+            yAngle = yAngle * -1f;
+            zAngle = zAngle * -1f;
+        }        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(flipRotation){
-            xAngle = xAngle * -1f;
-            yAngle = yAngle * -1f;
-            zAngle = zAngle * -1f;
-        }
         transform.Rotate(xAngle,yAngle,zAngle);
     }
 }
