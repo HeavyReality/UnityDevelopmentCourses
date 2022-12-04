@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustFactor: 1000
   rotationFactor: 75
+  mainThrust: {fileID: 8300000, guid: b17824742d8084e3185bd1f2126e57a2, type: 3}
 --- !u!54 &1759528720
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -239,3 +240,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30be94d536bee47d69ba3561214ac87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  successAudio: {fileID: 8300000, guid: 3e2b0514f0b3045998c033893dde93c6, type: 3}
+  explodeAudio: {fileID: 8300000, guid: e15ec3b752b984d4bafe4c3b5e300f89, type: 3}
