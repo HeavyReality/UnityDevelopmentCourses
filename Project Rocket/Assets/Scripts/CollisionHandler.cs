@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-
     void OnCollisionEnter(Collision other)
     {
         Scene nextScene = SceneManager.GetSceneByBuildIndex(0);
@@ -26,10 +25,16 @@ public class CollisionHandler : MonoBehaviour
                 break;
             default:
                 Debug.Log("Oh no! You've exploded!");
-                ReloadScene();
+                CrashSequence();
                 break;
         }
 
+    }
+
+    void CrashSequence()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadScene", 1f);
     }
 
     void ReloadScene()
@@ -43,7 +48,7 @@ public class CollisionHandler : MonoBehaviour
     void LoadNextScene()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        int lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+        int lastSceneIndex = SceneManager.sceneCountInBuildSettings;
 
         Debug.Log("Next scene should be: " + nextSceneIndex.ToString() + ". Last Scene is: " + lastSceneIndex.ToString());
 
