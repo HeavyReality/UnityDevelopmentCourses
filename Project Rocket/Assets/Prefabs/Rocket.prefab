@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5027345761188844671}
   - component: {fileID: 6621243055942929180}
   - component: {fileID: 1759528720}
-  - component: {fileID: 1759528715}
   - component: {fileID: 8111779477641078689}
   - component: {fileID: 1272333922}
   m_Layer: 0
@@ -132,20 +131,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!114 &1759528715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777550847978966533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0ca2a90cec94bb2842f718c7246d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrustFactor: 1000
-  rotationFactor: 50
 --- !u!82 &8111779477641078689
 AudioSource:
   m_ObjectHideFlags: 0
