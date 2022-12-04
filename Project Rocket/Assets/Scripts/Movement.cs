@@ -65,6 +65,6 @@ public class Movement : MonoBehaviour
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
 
         //Give physics control of rotation again
-        moveRigidbody.freezeRotation = true;
+        moveRigidbody.freezeRotation = false;
     }
 }
