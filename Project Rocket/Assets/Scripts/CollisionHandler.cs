@@ -19,7 +19,7 @@ public class CollisionHandler : MonoBehaviour
                 break;
             case "Finish":
                 Debug.Log("Next Level! Good Job!");
-                //SceneManager.LoadScene(nextScene.buildIndex);
+                LoadNextScene();
                 break;
             case "Fuel":
                 Debug.Log("You got the fuel!");
@@ -37,8 +37,22 @@ public class CollisionHandler : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         int currentSceneIndex = currentScene.buildIndex;
 
-        Debug.Log("The current scene is: '" + currentScene.name + "'.");
-
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    void LoadNextScene()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+
+        Debug.Log("Next scene should be: " + nextSceneIndex.ToString() + ". Number of Scenes is: " + sceneCount.ToString());
+
+        if(nextSceneIndex == sceneCount)
+        {
+            Debug.Log("Restarting Game!");
+            nextSceneIndex = 0;
+        }
+
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
