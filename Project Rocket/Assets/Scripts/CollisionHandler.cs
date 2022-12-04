@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] AudioClip successAudio;
+    [SerializeField] AudioClip explodeAudio;
+
+    AudioSource myAudio;
+
+    private void Start() {
+        //Get the audio source when script initializes
+        myAudio = GetComponent<AudioSource>();
+    }
     void OnCollisionEnter(Collision other)
     {
-        Scene nextScene = SceneManager.GetSceneByBuildIndex(0);
-
-        Debug.Log("The next scene is: '" + nextScene.name + "'.");
 
         switch (other.gameObject.tag)
         {
@@ -17,24 +23,32 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("You hit a friendly!");
                 break;
             case "Finish":
-                Debug.Log("Next Level! Good Job!");
-                LoadNextScene();
+                WinSequence();
                 break;
             case "Fuel":
                 Debug.Log("You got the fuel!");
                 break;
             default:
-                Debug.Log("Oh no! You've exploded!");
                 CrashSequence();
                 break;
         }
 
     }
 
+    void WinSequence()
+    { //Sequence for successfully navigating level
+        GetComponent<Movement>().enabled = false;
+        myAudio.PlayOneShot(successAudio);
+        Debug.Log("Next Level! Good Job!");
+        Invoke("LoadNextScene",1.5f);
+    }
+
     void CrashSequence()
     {
         GetComponent<Movement>().enabled = false;
-        Invoke("ReloadScene", 1f);
+        myAudio.PlayOneShot(explodeAudio);
+        Debug.Log("Oh no! You've exploded!");
+        Invoke("ReloadScene", 2f);
     }
 
     void ReloadScene()
@@ -49,7 +63,10 @@ public class CollisionHandler : MonoBehaviour
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         int lastSceneIndex = SceneManager.sceneCountInBuildSettings;
+        string nextSceneName = SceneManager.GetSceneByBuildIndex(nextSceneIndex).name;
 
+        //Logging
+        Debug.Log("The next scene is: '" + nextSceneName + "'.");
         Debug.Log("Next scene should be: " + nextSceneIndex.ToString() + ". Last Scene is: " + lastSceneIndex.ToString());
 
         if(nextSceneIndex == lastSceneIndex)
