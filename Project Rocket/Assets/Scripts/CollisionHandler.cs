@@ -63,10 +63,10 @@ public class CollisionHandler : MonoBehaviour
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         int lastSceneIndex = SceneManager.sceneCountInBuildSettings;
-        string nextSceneName = SceneManager.GetSceneByBuildIndex(nextSceneIndex).name;
+        string thisSceneName = SceneManager.GetActiveScene().name;
 
         //Logging
-        Debug.Log("The next scene is: '" + nextSceneName + "'.");
+        Debug.Log("The next scene is: '" + thisSceneName + "'.");
         Debug.Log("Next scene should be: " + nextSceneIndex.ToString() + ". Last Scene is: " + lastSceneIndex.ToString());
 
         if(nextSceneIndex == lastSceneIndex)
