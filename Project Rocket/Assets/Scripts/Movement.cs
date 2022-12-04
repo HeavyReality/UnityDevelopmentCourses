@@ -7,11 +7,13 @@ public class Movement : MonoBehaviour
     Rigidbody moveRigidbody;
     [SerializeField] float thrustFactor = 1000f;
     [SerializeField] float rotationFactor = 1f;
+    AudioSource moveAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         moveRigidbody = GetComponent<Rigidbody>();
+        moveAudio = GetComponent<AudioSource>();
 
     }
 
@@ -25,7 +27,19 @@ public class Movement : MonoBehaviour
     void ProcessThrust(){
         if(Input.GetKey(KeyCode.Space)){
             Debug.Log("Pressed Space - Thrusting");
+            if(!moveAudio.isPlaying)
+            {
+                moveAudio.Play();
+            }
+
             moveRigidbody.AddRelativeForce( Vector3.up * thrustFactor * Time.deltaTime);
+        }
+        else
+        {
+            if(moveAudio.isPlaying)
+            {
+                moveAudio.Stop();
+            }
         }
     }
     void ProcessRotation(){
