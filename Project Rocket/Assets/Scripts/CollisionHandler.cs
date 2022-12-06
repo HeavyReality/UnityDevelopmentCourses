@@ -7,6 +7,8 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] AudioClip successAudio;
     [SerializeField] AudioClip explodeAudio;
+    [SerializeField] ParticleSystem successBoom;
+    [SerializeField] ParticleSystem failBoom;
 
     AudioSource myAudio;
 
@@ -44,6 +46,7 @@ public class CollisionHandler : MonoBehaviour
 
         myAudio.Stop();
         myAudio.PlayOneShot(successAudio);
+        successBoom.Play();
 
         Debug.Log("Next Level! Good Job!");
         Invoke("LoadNextScene",1.5f);
@@ -55,6 +58,7 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<Movement>().enabled = false;
         myAudio.Stop();
         myAudio.PlayOneShot(explodeAudio);
+        failBoom.Play();
         Debug.Log("Oh no! You've exploded!");
         Invoke("ReloadScene", 2f);
     }
