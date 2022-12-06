@@ -10,13 +10,15 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource myAudio;
 
+    bool isTransitioning = false;
+
     private void Start() {
         //Get the audio source when script initializes
         myAudio = GetComponent<AudioSource>();
     }
     void OnCollisionEnter(Collision other)
     {
-
+        if(isTransitioning) { return; }
         switch (other.gameObject.tag)
         {
             case "Respawn":
@@ -32,20 +34,26 @@ public class CollisionHandler : MonoBehaviour
                 CrashSequence();
                 break;
         }
-
     }
 
     void WinSequence()
-    { //Sequence for successfully navigating level
+    {
+        //Sequence for successfully navigating level
+        isTransitioning = true;
         GetComponent<Movement>().enabled = false;
+
+        myAudio.Stop();
         myAudio.PlayOneShot(successAudio);
+
         Debug.Log("Next Level! Good Job!");
         Invoke("LoadNextScene",1.5f);
     }
 
     void CrashSequence()
     {
+        isTransitioning = true;
         GetComponent<Movement>().enabled = false;
+        myAudio.Stop();
         myAudio.PlayOneShot(explodeAudio);
         Debug.Log("Oh no! You've exploded!");
         Invoke("ReloadScene", 2f);
