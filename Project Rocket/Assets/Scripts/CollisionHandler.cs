@@ -13,14 +13,39 @@ public class CollisionHandler : MonoBehaviour
     AudioSource myAudio;
 
     bool isTransitioning = false;
+    bool collisionsOn = true;
 
     private void Start() {
         //Get the audio source when script initializes
         myAudio = GetComponent<AudioSource>();
     }
+
+    void Update()
+    {
+        SkipLevel();
+        ToggleCollision();
+    }
+
+    void SkipLevel()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextScene();
+        }
+    }
+
+    void ToggleCollision()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsOn = !collisionsOn;
+        }
+    }
+
     void OnCollisionEnter(Collision other)
     {
-        if(isTransitioning) { return; }
+        if(isTransitioning || !collisionsOn) { return; }
+
         switch (other.gameObject.tag)
         {
             case "Respawn":
