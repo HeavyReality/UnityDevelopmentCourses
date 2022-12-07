@@ -61,6 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+--- !u!198 &3038848549261969763 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198100719057022332, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+  m_PrefabInstance: {fileID: 2923930354196423711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5301058820118182204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
+--- !u!198 &4723175370371295070 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 584678573886053986, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
+  m_PrefabInstance: {fileID: 5301058820118182204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6442422460124573290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +185,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
+--- !u!198 &5869640607428489224 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 584678573886053986, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
+  m_PrefabInstance: {fileID: 6442422460124573290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8547540743737592456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +251,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+--- !u!198 &8368036141345859572 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198100719057022332, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+  m_PrefabInstance: {fileID: 8547540743737592456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8880154789356332075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -319,6 +339,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.53
       objectReference: {fileID: 0}
+    - target: {fileID: 6621243055942929180, guid: 0026ed7b66b8e452e90695a4a240d025, type: 3}
+      propertyPath: leftJet
+      value: 
+      objectReference: {fileID: 8368036141345859572}
+    - target: {fileID: 6621243055942929180, guid: 0026ed7b66b8e452e90695a4a240d025, type: 3}
+      propertyPath: rightJet
+      value: 
+      objectReference: {fileID: 3038848549261969763}
+    - target: {fileID: 6621243055942929180, guid: 0026ed7b66b8e452e90695a4a240d025, type: 3}
+      propertyPath: leftThrust
+      value: 
+      objectReference: {fileID: 4723175370371295070}
+    - target: {fileID: 6621243055942929180, guid: 0026ed7b66b8e452e90695a4a240d025, type: 3}
+      propertyPath: rightThrust
+      value: 
+      objectReference: {fileID: 5869640607428489224}
     - target: {fileID: 8281687266337927405, guid: 0026ed7b66b8e452e90695a4a240d025, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.56

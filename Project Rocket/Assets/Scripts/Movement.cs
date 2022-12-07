@@ -7,6 +7,10 @@ public class Movement : MonoBehaviour
     [SerializeField] float thrustFactor = 1000f;
     [SerializeField] float rotationFactor = 1f;
     [SerializeField] AudioClip mainThrust;
+    [SerializeField] ParticleSystem leftJet;
+    [SerializeField] ParticleSystem rightJet;
+    [SerializeField] ParticleSystem leftThrust;
+    [SerializeField] ParticleSystem rightThrust;
 
     AudioSource moveAudio;
     Rigidbody moveRigidbody;
@@ -27,34 +31,72 @@ public class Movement : MonoBehaviour
     }
 
     void ProcessThrust(){
-        if(Input.GetKey(KeyCode.Space)){
+        if(Input.GetKey(KeyCode.Space))
+        {
             Debug.Log("Pressed Space - Thrusting");
-            if(!moveAudio.isPlaying)
-            {
-                moveAudio.PlayOneShot(mainThrust);
-            }
-
-            moveRigidbody.AddRelativeForce( Vector3.up * thrustFactor * Time.deltaTime);
+            StartThrusting();
         }
         else
         {
-            if(moveAudio.isPlaying)
-            {
-                moveAudio.Stop();
-            }
+            StopThrusting();
         }
     }
+
+    void StartThrusting()
+    {
+        if (!moveAudio.isPlaying)
+        {
+            moveAudio.PlayOneShot(mainThrust);
+            leftJet.Play();
+            rightJet.Play();
+        }
+
+        moveRigidbody.AddRelativeForce(Vector3.up * thrustFactor * Time.deltaTime);
+    }
+
+    void StopThrusting()
+    {
+        if (moveAudio.isPlaying)
+        {
+            moveAudio.Stop();
+            leftJet.Stop();
+            rightJet.Stop();
+        }
+    }
+
     void ProcessRotation(){
 
         if((Input.GetKey(KeyCode.A)) && !(Input.GetKey(KeyCode.D)))
         {
             Debug.Log("Rotate Left");
-            ApplyRotation(rotationFactor);
+            RotateLeft();
         }
-
-        if (!(Input.GetKey(KeyCode.A)) && (Input.GetKey(KeyCode.D))){
+        else if (!(Input.GetKey(KeyCode.A)) && (Input.GetKey(KeyCode.D)))
+        {
             Debug.Log("Rotate Right");
-            ApplyRotation(-rotationFactor);
+            RotateRight();
+        }
+        else
+        {
+            StopRotation();
+        }
+    }
+
+    void RotateRight()
+    {
+        if (!leftThrust.isPlaying)
+        {
+            leftThrust.Play();
+        }
+        ApplyRotation(-rotationFactor);
+    }
+
+    void RotateLeft()
+    {
+        ApplyRotation(rotationFactor);
+        if (!rightThrust.isPlaying)
+        {
+            rightThrust.Play();
         }
     }
 
@@ -66,5 +108,11 @@ public class Movement : MonoBehaviour
 
         //Give physics control of rotation again
         moveRigidbody.freezeRotation = false;
+    }
+
+    private void StopRotation()
+    {
+        leftThrust.Stop();
+        rightThrust.Stop();
     }
 }
