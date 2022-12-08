@@ -29,7 +29,7 @@ public class CollisionHandler : MonoBehaviour
 
     void ForceCrash()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.K) && !isTransitioning)
         {
             CrashSequence();
         }
@@ -37,9 +37,9 @@ public class CollisionHandler : MonoBehaviour
 
     void SkipLevel()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L) && !isTransitioning)
         {
-            LoadNextScene();
+            WinSequence();
         }
     }
 
