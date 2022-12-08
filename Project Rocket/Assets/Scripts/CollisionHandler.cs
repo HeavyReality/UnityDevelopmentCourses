@@ -29,7 +29,7 @@ public class CollisionHandler : MonoBehaviour
 
     void ForceCrash()
     {
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.K))
         {
             CrashSequence();
         }
