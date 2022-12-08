@@ -24,6 +24,15 @@ public class CollisionHandler : MonoBehaviour
     {
         SkipLevel();
         ToggleCollision();
+        ForceCrash();
+    }
+
+    void ForceCrash()
+    {
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            CrashSequence();
+        }
     }
 
     void SkipLevel()
