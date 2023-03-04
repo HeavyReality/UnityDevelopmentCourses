@@ -19,17 +19,17 @@ public class Oscillator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(period != 0) {
-            float cycles = Time.time /  period; //Each period over time is a cycle
-            const float tau = Mathf.PI * 2; //Tau is Pi * 2 and is the amount of radians in a circle
-            float rawSinWave = Mathf.Sin( cycles * tau ); //generating a sin wave with cycles by Tau
+        if(period <= Mathf.Epsilon) { return; } //Floats are tricky and epsilon is the lowest float value compare to epislong and return instead of encapsulating the whole thing.
 
-            movementFactor = Mathf.Abs(rawSinWave); // Absolute value of sin wave will cycle it in double the period
-            //Can also be done through more complicated math
-            //movementFactor = ( rawSinWave + 1 ) / 2 // averaging the movement factor will cycle the sin wave in regular speed
+        float cycles = Time.time /  period; //Each period over time is a cycle
+        const float tau = Mathf.PI * 2; //Tau is Pi * 2 and is the amount of radians in a circle
+        float rawSinWave = Mathf.Sin( cycles * tau ); //generating a sin wave with cycles by Tau
 
-            Vector3 offset = movementVector * movementFactor;
-            transform.position = startingPosition + offset;
-        }
+        movementFactor = Mathf.Abs(rawSinWave); // Absolute value of sin wave will cycle it in double the period
+        //Can also be done through more complicated math
+        //movementFactor = ( rawSinWave + 1 ) / 2 // averaging the movement factor will cycle the sin wave in regular speed
+
+        Vector3 offset = movementVector * movementFactor;
+        transform.position = startingPosition + offset;
     }
 }
