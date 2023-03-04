@@ -22,7 +22,10 @@ public class Oscillator : MonoBehaviour
         float cycles = Time.time / period;
         const float tau = Mathf.PI * 2;
         float rawSinWave = Mathf.Sin( cycles * tau );
+
         movementFactor = Mathf.Abs(rawSinWave);
+        //Can also be done through more complicated math
+        //movementFactor = ( rawSinWave + 1 ) / 2
 
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPosition + offset;
