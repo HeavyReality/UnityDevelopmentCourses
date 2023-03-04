@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Sandbox.unity
-    guid: a6a4346def1774351a67fe4604ce1bcb
+    guid: 0e5cab54333b54e60908e78c45523acb
   - enabled: 1
     path: Assets/Scenes/Over.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Through.unity
     guid: af50da1978fbe4a7e8d968cc9c0494fc
+  - enabled: 1
+    path: Assets/Scenes/1-StoryMissions/PlanetFall.unity
+    guid: a6a4346def1774351a67fe4604ce1bcb
   m_configObjects: {}
